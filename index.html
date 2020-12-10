@@ -11,28 +11,18 @@
 
 <body>
 
+  <div id="app" v-bind:style="{background: '#' + color}">
 
-  <div id="app">
-    <img 
-    v-on:mouseover="toggleShowPrices" 
-    v-on:mouseout="toggleShowPrices" 
-    v-bind:src="img" 
-    v-bind:alt="name">
-    <h1>{{name}}
-      <span v-if="changePercent > 0">👽</span>
-      <span v-elseid="changePercent == 0">😶</span>
-      <span v-else>🤡</span>
-      <!-- 
-      <span v-show="changePercent > 0">👽</span>
-      <span v-show="changePercent == 0">😶</span>
-      <span v-show="changePercent < 0">🤡</span> -->
-      <span v-on:click="toggleShowPrices">{{ showPrices ? '🐵' : '🙈' }}</span>
-    </h1>
-
-
-    <ul v-show=showPrices>
-      <li v-for="(p, i) in pricesWithDays" v-bind:key="p.day">{{i}} - {{p.day}} - {{p.value}}</li>
-    </ul>
+    <coin-detail
+    v-on:change-color="updateColor" 
+    v-bind:coin="btc">
+    <template v-slot:text>
+      <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolore veritatis officiis ex, esse quaerat provident odit aliquam vero perspiciatis tempore reprehenderit optio, maiores deserunt amet, excepturi adipisci? Saepe, rerum error.</p>
+    </template>
+    <template v-slot:link>
+      <a href="#">Link!</a>
+    </template>
+    </coin-detail>
 
   </div>
 
